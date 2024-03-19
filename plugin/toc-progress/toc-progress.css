@@ -1,0 +1,104 @@
+/*************************************************
+*                                                *
+* CSS for the TOC-Progress plugin for Reveal.js  *
+*                                                *
+* Author: Igor Leturia                           *
+*                                                *
+* License: GPL v3                                *
+* http://www.gnu.org/copyleft/gpl.html           *
+*                                                *
+*************************************************/
+
+/* Style for the TOC-Progress footer */
+
+#toc-progress-footer
+{
+	opacity: 1;
+	transition: opacity 600ms ease-in-out;
+	position: fixed;
+	bottom: 3px;
+	height: 5vh;
+	z-index: 20;
+	width: 100%;
+	font-size: 1.3vw;
+	white-space: nowrap;
+	padding-top: 2.5vh;
+	padding-bottom: 0.0vh;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Bottom position for the TOC-Progress footer when progress bar is visible */
+
+div.progress[style="display: block;"] ~ #toc-progress-footer
+{
+	top: 3px;
+}
+
+/* Bottom position for the TOC-Progress footer when progress bar is not visible */
+
+#toc-progress-footer
+{
+	bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#toc-progress-footer li
+{
+    display: inline-block;
+    padding-left: 0px; /* remove initial padding to perfectly center */
+    min-width: 10vw;
+  	text-align: center;
+}
+
+/* Make TOC-Progress invisible if explicitly indicated */
+
+.noclutter #toc-progress-footer
+{
+	opacity: 0;
+	transition: opacity 600ms ease-in-out;
+}
+
+/* Make TOC-Progress invisible in overview mode */
+
+.overview #toc-progress-footer
+{
+	opacity: 0;
+	transition: opacity 600ms ease-in-out;
+}
+
+/* Position and styles for the left part (main sections) of the TOC-Progress */
+
+#toc-progress-footer-main
+{
+	width: 100%;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+	letter-spacing: 0em;
+}
+
+#toc-progress-footer-main-inside
+{
+	float: right;
+	margin-right: 10em;
+}
+
+/* Position and styles for the right part (subsections) of the TOC-Progress */
+
+#toc-progress-footer-secondary
+{
+	width: 0%;
+	height: 0%;
+	float: left;
+	overflow: hidden;
+	letter-spacing: 0em;
+}
+
+#toc-progress-footer-secondary-inside
+{
+	float: right;
+	margin-left: 2em;
+}
+

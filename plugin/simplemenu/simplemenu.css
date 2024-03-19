@@ -1,0 +1,79 @@
+.menubar {
+  transition: opacity 600ms ease-in-out;
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 3vmin;
+  z-index: 2;
+  border-bottom: 2px solid rgba(150, 150, 150, 0.5); }
+  .menubar ul.smenu, .menubar .smenu ul {
+    list-style-type: none;
+    margin-left: 0;
+    text-align: center; }
+  .menubar, .menubar a {
+    font-size: 1rem; }
+
+.no-title-footer .menubar {
+  opacity: 0;
+  display: none;
+}
+
+.smenu li {
+  display: inline-block; }
+
+.smenu a {
+  font-size: 3vmin;
+  transition: opacity 600ms ease-in-out, font-size 600ms ease-in-out, color 100ms ease-in-out; 
+  padding: 1rem;
+  opacity: 0.7;
+  display: block; }
+
+.smenu a:hover {
+  color: rgba(150, 150, 150, 0.5); 
+  font-size: 3vmin;
+  opacity: 0.7;
+  transition: opacity 600ms ease-in-out, font-size 600ms ease-in-out, color 100ms ease-in-out; 
+}
+
+.smenu a.active,
+.smenu li.active a {
+  font-size: 3.5vmin;
+  opacity: 1;
+  transition: opacity 600ms ease-in-out, font-size 600ms ease-in-out, color 100ms ease-in-out; 
+  pointer-events: none; }
+
+.slides + .menubar {
+  bottom: 0;
+  border-top: 1px solid rgba(150, 150, 150, 0.5);
+  border-bottom: none; }
+
+.slides + .menubar ~ .controls {
+  margin-bottom: 6vmin; }
+
+.small {
+  font-size: .7em; }
+
+.smallitalic {
+  font-size: .7em;
+  font-style: italic; }
+
+.reveal pre {
+  width: 100%;
+  margin: 0 auto;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: rgba(150, 150, 150, 0.5); }
+
+section ul li + li {
+  margin-top: 1rem; }

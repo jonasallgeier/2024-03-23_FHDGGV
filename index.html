@@ -1,0 +1,914 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- remember: COMPILATION OF REVEAL.JS IS DONE WITH GULP -->
+    <!-- if you want to change something in reaveal.js: best to redownload the newest version; change there then compile with "gulp" command -->
+    <title>FH-DGGV</title>
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" sizes="any">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/myfonts.css">
+    <link rel="stylesheet" href="dist/theme/cNbright.css" id="theme">
+    <link rel="stylesheet" href="katex/katex.min.css">
+    <script defer src="katex/katex.min.js"></script>
+    <script defer src="katex/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+    <script type="text/javascript" src="bokeh/bokeh-2.4.3.min.js"></script>
+    <script type="text/javascript" src="bokeh/bokeh-widgets-2.4.3.min.js"></script>
+    <script type="text/javascript">
+      Bokeh.set_log_level("info");
+    </script>
+     
+    <script type="text/javascript" src="bokeh/math.js"></script>
+    <script type="text/javascript" src="bokeh/model1.js"></script>
+    <script type="text/javascript" src="bokeh/model2.js"></script>
+    <script type="text/javascript" src="bokeh/model2x.js"></script>
+    <script type="text/javascript" src="bokeh/model3.js"></script>
+    <script type="text/javascript" src="bokeh/model5.js"></script>
+    <!--<script type="text/javascript" src="bokeh/model4.js"></script> -->
+    <script type="text/javascript" src="bokeh/fpsimple.js"></script>
+    <script type="text/javascript" src="bokeh/marchingsquares.min.js"></script>
+    <script type="text/javascript" src="bokeh/bokeh-api-2.4.3.min.js"></script>
+    <link rel="stylesheet" href="plugin/menu/menu.css">
+    <link rel="stylesheet" href="plugin/simplemenu/simplemenu.css">
+    <link href="fontawesome/css/all.css" rel="stylesheet">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/styles/vs.css" id="highlight-theme">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="menubar">
+        <!-- to show backgrounds, divs must be non-empty! -->
+        <a href="#/0" class="topleftlogo" ondragstart="return false;" style="order:1; flex-grow: 3;flex-shrink: 1; background-size: contain; background-position: center; height:4vh; "></a>
+        <div style="order:2; flex-grow: 1; flex-shrink: 8; background-color: none;"></div>
+        <ul class="smenu" style="order:3; flex-grow: 8;flex-shrink: 1; background-color: none;"></ul>
+        <div style="order:4; flex-grow: 1; flex-shrink: 8; background-color: none;"></div> 
+        <div ondblclick="init()" id="toprighttimerCT" style="order:5; flex-grow: 3; flex-shrink: 1; flex-basis:0; background-color: none; min-width: 0; max-height:1rem; height:20vh; ">
+          <canvas style="width: 100%; height: 100%;" width="100px" height="100px" id="toprighttimer" ></canvas>
+        </div>
+      </div>
+      <div class="slides">
+        <section>
+          <section data-state="no-title-footer" data-transition="fade"  data-transition-speed="slow" style="margin-top: 5rem" data-background-video="graphics/backgroundvideo.mp4" 
+          data-background-video-loop data-background-video-muted  data-background-opacity="0.2" data-menu-title="Opener" data-visibility="uncounted">
+            <h1 style="text-transform: none; font-size: 2.2em;">ML-basierte Ersatzmodelle <br> zur beschleunigten Kalibrierung und Unsicherheitsberechnung</h1>
+            <div style="padding-bottom:60px; padding-top: 60px;">
+              <i class="fas fa-pencil-alt fa-2x" data-id="leftIconx"></i>
+              <i class="fas fa-laptop-code fa-2x" data-id="middleIconx" style="padding-left: 60px; padding-right: 60px"></i>
+              <i class="fas fa-water fa-2x"  data-id="rightIcon"></i>
+            </div>
+            <h5>Dr. Jonas Allgeier <span style="font-style: italic; font-weight: normal;">(BoSS Consult GmbH)</span></h5>
+            <h5>Prof. Dr.-Ing. Olaf A. Cirpka <span style="font-style: italic; font-weight: normal;">(Universität Tübingen)</span></h5>
+          </section>
+        </section>
+        <section name="↦">
+          <section data-menu-title="Intro">
+            <h2><i class="fad fa-sliders-h fa-sm"></i> Kalibrierung moderner Modelle</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1;">
+                <ul>
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1">moderne Modelle &rarr; viele Parameter</li></div>
+                  <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2">Was sind die "richtigen" Werte?</li></div>
+                  <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3">Kalibrierung <br><span style="font-family: 'Roboto', sans-serif">&rarr;</span> Modell und Messungen in Einklang bringen</div>
+                  <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out" data-fragment-index="6">automatisierte Verfahren</li></div>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" style="list-style-type: '✓ '" data-fragment-index="5">schnelles Modell</li></div>
+                    <div class="fragment fade-in" data-fragment-index="5"><li class="fragment semi-fade-out" style="list-style-type: '✕ ';" data-fragment-index="6">
+                    langsames Modell</li></div>
+                  </ul>
+                  <li class="fragment fade-in" data-fragment-index="6">Wie trotzdem kalibrieren?</li>
+                  <ul style="list-style-type: '&rarr; '">
+                      <div class="fragment fade-in-then-semi-out" data-fragment-index="7"><li>Ersatzmodelle</li></div>
+                   </ul>
+                </ul>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="r-stack">
+                    <img class="fragment fade-in-then-semi-out" data-fragment-index="0" src="graphics/manyParameters.png" ondragstart="return false;"/>
+                    <div class="fragment fade-out" data-fragment-index="3"><div class="fragment fade-in" data-fragment-index="1" style="padding-bottom: 400px;"><i class="fas fa-question fa-6x"></i></div></div>
+                    <div class="fragment fade-out" data-fragment-index="4"><div class="fragment fade-in" data-fragment-index="3"><i class="fas fa-user-robot fa-6x"></i></div></div>
+                    <div class="fragment fade-out" data-fragment-index="5"><div class="fragment fade-in" data-fragment-index="4">
+                      <i style="padding-bottom: 40px;" class="far fa-smile-beam fa-6x"></i>
+                      <br>
+                      <span class="fa-stack fa-3x">
+                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
+                        <i class="fal fa-tachometer-alt-fastest fa-stack-1x"></i>
+                      </span>
+                    </div></div>
+                    <div class="fragment fade-out" data-fragment-index="6"><div class="fragment fade-in" data-fragment-index="5">
+                      <i style="padding-bottom: 40px;" class="far fa-meh-rolling-eyes fa-6x"></i>
+                      <br>
+                      <span class="fa-stack fa-3x">
+                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
+                        <i class="fal fa-tachometer-alt-slow fa-stack-1x"></i>
+                      </span>
+                      </div>
+                    </div>
+                    <div class="fragment fade-in-then-out" data-fragment-index="7"><i style="--fa-secondary-color: #b4b7b9; --fa-secondary-opacity: 1.0" class="fad fa-abacus fa-4x" data-id="abacus"></i><br><i class="fas fa-fast-forward fa-4x" style="padding-top: 80px"></i></div>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section data-menu-title="Zwei Varianten">
+            <h2><i class="fad fa-sliders-h fa-sm"></i> Zwei Varianten</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1;">
+                <ul>
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="4">Ziele</li></div>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1">Parameterwerte</li></div>
+                    <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2">
+                    Parameterunsicherheiten</li></div>
+                    <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3">
+                    Parameterkorrelationen</li></div>
+                    <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out"  data-fragment-index="4">
+                    PC-Resourcen sinnvoll nutzen</li></div>
+                  </ul>
+                  <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">Variante 1:<br>klassische Kalibrierung + Postrocessing (GPE+MCMC)</li></div>
+                  <li class="fragment fade-in" data-fragment-index="5">Variante 2:<br>direkte <span style="font-style: italic">A Posteriori</span> Bestimmung (SBI)</li>
+                </ul>
+              </div>
+              <div style="flex-grow: 1;">
+                <!-- <div class="r-stack">
+                    <img class="fragment fade-in-then-semi-out" data-fragment-index="0" src="graphics/manyParameters.png" ondragstart="return false;"/>
+                    <div class="fragment fade-out" data-fragment-index="3"><div class="fragment fade-in" data-fragment-index="1" style="padding-bottom: 400px;"><i class="fas fa-question fa-6x"></i></div></div>
+                    <div class="fragment fade-out" data-fragment-index="4"><div class="fragment fade-in" data-fragment-index="3"><i class="fas fa-user-robot fa-6x"></i></div></div>
+                    <div class="fragment fade-out" data-fragment-index="5"><div class="fragment fade-in" data-fragment-index="4">
+                      <i style="padding-bottom: 40px;" class="far fa-smile-beam fa-6x"></i>
+                      <br>
+                      <span class="fa-stack fa-3x">
+                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
+                        <i class="fal fa-tachometer-alt-fastest fa-stack-1x"></i>
+                      </span>
+                    </div></div>
+                    <div class="fragment fade-out" data-fragment-index="6"><div class="fragment fade-in" data-fragment-index="5">
+                      <i style="padding-bottom: 40px;" class="far fa-meh-rolling-eyes fa-6x"></i>
+                      <br>
+                      <span class="fa-stack fa-3x">
+                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
+                        <i class="fal fa-tachometer-alt-slow fa-stack-1x"></i>
+                      </span>
+                      </div>
+                    </div>
+                    <div class="fragment fade-in-then-out" data-fragment-index="7"><i style="--fa-secondary-color: #b4b7b9; --fa-secondary-opacity: 1.0" class="fad fa-abacus fa-4x" data-id="abacus"></i><br><i class="fas fa-fast-forward fa-4x" style="padding-top: 80px"></i></div>
+                  </div> -->
+              </div>
+            </div>
+          </section>
+          <section data-menu-title="Ammer-Beispiel" data-auto-animate>
+            <h2><i class="fad fa-image-polaroid fa-sm"></i> Beispiel: Ammer-Talaue</h2>
+            <div class="r-stack">
+              <img src="graphics/location.svg" ondragstart="return false;" data-id="xasdf">
+            </div>
+          </section>
+        </section>
+
+        <section name="Methoden (GPE+MCMC)">
+          <section data-menu-title="Methoden (GPE+MCMC)">
+            <h2><i data-id="abacus" class="fad fa-abacus fa-sm"></i> Gauß-Prozess Emulatoren als Ersatzmodelle</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1.5; text-align: left;">
+                <ul>
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1">GPE: Interpolationsmethode</li></div>
+                  <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="5">Eingabe</li></div>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3">bekannte Datenpunkte \(\boldsymbol{X}^\bullet\), \(\boldsymbol{y}^\bullet\)</li></div>
+                    <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out" data-fragment-index="4">Kernel-Funktion <br>\(C(\boldsymbol{x}_a-\boldsymbol{x}_b,\boldsymbol{\theta}) = \theta_0 (1+\sqrt{6}d)\exp(-\sqrt{6}d)\)<br>\(\textstyle d = \sqrt{\sum_{i=1}^{n} \left(\frac{x_{a,i}-x_{b,i}}{\theta_i}\right)^2}\)</li></div>
+                    <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">angepasste Koeffizienten \(\boldsymbol{\theta}\)</li></div>
+                  </ul>
+                  <div class="fragment fade-in" data-fragment-index="5"><li>Ausgabe</li></div>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="6"><li class="fragment semi-fade-out" data-fragment-index="7">Interpolationsfunktion \(y^\circ = \mu(\boldsymbol{x}^\circ)\)</li></div>
+                    <div class="fragment fade-in" data-fragment-index="7"><li class="fragment semi-fade-out" data-fragment-index="8">Unsicherheitsfunktion \(\sigma^2(\boldsymbol{x}^\circ)\)</li></div>
+                    <div class="fragment fade-in" data-fragment-index="8"><li>Ableitungen \(\nabla y^\circ\)</li></div>
+                  </ul>
+                </ul>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="r-stack">
+                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/gpe1.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="6" src="graphics/gpe2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="7" src="graphics/gpe3.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="8" src="graphics/gpe4.png" ondragstart="return false;"/>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section data-menu-title="Ersatzmodelle in Kalibrierung">
+            <h2><i class="fad fa-user-headset fa-sm"></i> Ersatzmodelle in der Kalibrierung</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1; text-align: left;">
+                <ul>
+                  <li class="fragment semi-fade-out" data-fragment-index="9">Einsatzmöglichkeiten bei klassischem Algorithmus<br>(z.B. nach Regis &amp; Shoemaker, 2009)</li>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out" data-fragment-index="5">Plausibilität im Voraus abschätzen</li></div>
+                    <div class="fragment fade-in" data-fragment-index="5"><li class="fragment semi-fade-out" data-fragment-index="7">Performance im Voraus abschätzen</li></div>
+                    <div class="fragment fade-in" data-fragment-index="7"><li class="fragment semi-fade-out" data-fragment-index="9">Richtung abschätzen</li></div>
+                  </ul>
+                  <div class="fragment fade-in" data-fragment-index="9"><li class="fragment semi-fade-out" data-fragment-index="11">GPE-Varianten</li></div>
+                  <ol>
+                    <div class="fragment fade-in" data-fragment-index="9"><li class="fragment semi-fade-out" data-fragment-index="10">GPE <span style="font-family: 'Roboto', sans-serif">&rarr;</span> Zielwertfunktion</li>
+                    <div class="fragment fade-in" data-fragment-index="10"><li class="fragment semi-fade-out" data-fragment-index="11">GPEs <span style="font-family: 'Roboto', sans-serif">&rarr;</span> einzelne Beobachtungen</li>
+                  </ol>
+                  <div class="fragment fade-in" data-fragment-index="11"><li style="list-style-type: '&rarr; '" class="fragment semi-fade-out" data-fragment-index="12">einzelner Parametersatz</li></div>
+                  <div class="fragment fade-in" data-fragment-index="12"><li>Postprocessing</li></div>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="13"><li class="fragment semi-fade-out" data-fragment-index="14">echte MCMC-Analyse mit Ersatzmodell</li></div>
+                    <div class="fragment fade-in" data-fragment-index="14"><li style="list-style-type: '&rarr; '" class="fragment semi-fade-out" data-fragment-index="15">vollständige <span style="font-style: italic;">A Posteriori</span> Verteilung</li></div>
+                    <div class="fragment fade-in" data-fragment-index="15"><li style="list-style-type: '&rarr; '" class="fragment semi-fade-out" data-fragment-index="16">Parameterkorrelationen</li></div>
+                    <div class="fragment fade-in" data-fragment-index="16"><li class="fragment semi-fade-out" data-fragment-index="17">Jacobi-Matrix</li></div>
+                    <div class="fragment fade-in" data-fragment-index="17"><li style="list-style-type: '&rarr; '">Sensitivitäten</li></div>
+                  </ul>
+                </ul>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="r-stack">
+                    <img src="graphics/usefor-1.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="1" src="graphics/usefor-2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/usefor-3.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="3" src="graphics/usefor-4.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="4" src="graphics/usefor-5.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="5" src="graphics/usefor-6.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="6" src="graphics/usefor-7.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="7" src="graphics/usefor-8.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="8" src="graphics/usefor-9.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="9" src="graphics/rmsenew-1.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="10" src="graphics/rmsenew-2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="11" src="graphics/afterwards-1.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="14" src="graphics/afterwards-2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="16" src="graphics/blank.png" ondragstart="return false;"/>
+                    <span class="fragment fade-in" data-fragment-index="16" style="padding-bottom: 200px">\(\begin{bmatrix}
+  \frac{\partial h_1}{\partial p_1} & 
+    \frac{\partial h_1}{\partial p_2} &
+     \cdots & 
+    \frac{\partial h_1}{\partial p_m} \\[1ex]
+  \frac{\partial h_2}{\partial p_1} & 
+    \frac{\partial h_2}{\partial p_2} & 
+     \cdots & 
+    \frac{\partial h_2}{\partial p_m} \\[1ex]
+  \vdots & 
+    \vdots & 
+     \ddots & 
+    \vdots \\[1ex]
+  \frac{\partial h_n}{\partial p_1} & 
+    \frac{\partial h_n}{\partial p_2} & 
+     \cdots & 
+    \frac{\partial h_n}{\partial p_m}
+\end{bmatrix}\)</span>
+                </div>
+              </div>
+            </div>
+          </section>
+                    <section data-menu-title="Parallelisierung">
+            <h2><i class="fad fa-cogs fa-sm"></i> Parallelisierter Ansatz</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1; text-align: left;">
+                <ol>
+                  <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="4">ausgewählte Punkte &rarr; Modell<br>\(\boldsymbol{\vartheta}^\bullet = \mathcal{M}(\boldsymbol{\tilde{p}})\)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">Zielwerte bestimmen<br>\(y_{\boldsymbol{\tilde{p}}} = f_\mathrm{obj}(\boldsymbol{\vartheta}^\ast,\boldsymbol{\vartheta}^\bullet)\)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="5"><li class="fragment semi-fade-out" data-fragment-index="6">Ersatzmodell(e) trainieren<br>\(\vartheta^\circ = \mathcal{P}(\boldsymbol{\tilde{p}}) \approx \mathcal{M}(\boldsymbol{\tilde{p}}) = \boldsymbol{\vartheta}^\bullet\)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="6"><li class="fragment semi-fade-out" data-fragment-index="10">neue Punkte vorschlagen<br>\(\Delta \boldsymbol{\tilde{p}} = c \cdot \boldsymbol{e} \)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="10"><li class="fragment semi-fade-out" data-fragment-index="11">Punkte auswählen<br>\(\xi \cdot m^\mathrm{explore} + (1-\xi) \cdot m^\mathrm{exploit}\)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="11"><li>wiederholen</li></div>
+                </ol>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="r-stack">
+                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/calibProc2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="3" src="graphics/calibProc3.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="7" src="graphics/calibProc4.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="8" src="graphics/calibProc5.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="9" src="graphics/calibProc6.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="10" src="graphics/calibProc7.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="11" src="graphics/calibProc8.png" ondragstart="return false;"/>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section name="Methoden (SBI)">
+          <section data-menu-title="Methoden (SBI)">
+            <h2><i class="fad fa-sliders-h fa-sm"></i> Simulation-Based Inference</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1;">
+                <ul>
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="4">Vorgehensweise "NPE-C"<br>(nach Greenberg et al. 2019)</li></div>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1"><span style="font-style: italic">A Priori</span> Verteilung &rarr; Parametersätze</li></div>
+                    <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2">
+                    mit echtem Modell auswerten</li></div>
+                    <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3">
+                    neuronales Netz:<br>Modelloutput &rarr; Inputparameter </li></div>
+                    <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out"  data-fragment-index="4">
+                    Abfrage für Zielwerte
+                    </li></div>
+                  </ul>
+                  <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">keine zus. Modellläufe bzw. Kopplung nötig</li></div>
+                  <li class="fragment fade-in" data-fragment-index="5">direkt <span style="font-style: italic">A Posteriori</span> Verteilung</li>
+                </ul>
+              </div>
+              <div style="flex-grow: 1;">
+                <!-- <div class="r-stack">
+                    <img class="fragment fade-in-then-semi-out" data-fragment-index="0" src="graphics/manyParameters.png" ondragstart="return false;"/>
+                    <div class="fragment fade-out" data-fragment-index="3"><div class="fragment fade-in" data-fragment-index="1" style="padding-bottom: 400px;"><i class="fas fa-question fa-6x"></i></div></div>
+                    <div class="fragment fade-out" data-fragment-index="4"><div class="fragment fade-in" data-fragment-index="3"><i class="fas fa-user-robot fa-6x"></i></div></div>
+                    <div class="fragment fade-out" data-fragment-index="5"><div class="fragment fade-in" data-fragment-index="4">
+                      <i style="padding-bottom: 40px;" class="far fa-smile-beam fa-6x"></i>
+                      <br>
+                      <span class="fa-stack fa-3x">
+                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
+                        <i class="fal fa-tachometer-alt-fastest fa-stack-1x"></i>
+                      </span>
+                    </div></div>
+                    <div class="fragment fade-out" data-fragment-index="6"><div class="fragment fade-in" data-fragment-index="5">
+                      <i style="padding-bottom: 40px;" class="far fa-meh-rolling-eyes fa-6x"></i>
+                      <br>
+                      <span class="fa-stack fa-3x">
+                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
+                        <i class="fal fa-tachometer-alt-slow fa-stack-1x"></i>
+                      </span>
+                      </div>
+                    </div>
+                    <div class="fragment fade-in-then-out" data-fragment-index="7"><i style="--fa-secondary-color: #b4b7b9; --fa-secondary-opacity: 1.0" class="fad fa-abacus fa-4x" data-id="abacus"></i><br><i class="fas fa-fast-forward fa-4x" style="padding-top: 80px"></i></div>
+                  </div> -->
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section name="Ergebnisse">
+<!--           <section>
+            <h2><i class="fad fa-stars fa-sm" style="vertical-align: +12%;"></i> A Special Parameter Space</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1.5; text-align: left;">
+                <ul>
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1">prior distributions</li></div>
+                  <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2">cumulative density functions</li></div>
+                  <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3">standard logistic distributions</li></div>
+                  <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out" data-fragment-index="5">transformation step<br>\(\textstyle\tilde{p} = \log\!\left(\frac{f_\mathrm{cdf}(p)}{1-f_\mathrm{cdf}(p)}\right)\)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="5"><li>advantages</li></div>
+                  <ul>
+                    <div class="fragment fade-in" data-fragment-index="6"><li class="fragment semi-fade-out" data-fragment-index="7">dimensionless</li></div>
+                    <div class="fragment fade-in" data-fragment-index="7"><li class="fragment semi-fade-out" data-fragment-index="8">homogeneous support intervals</li></div>
+                    <div class="fragment fade-in" data-fragment-index="8"><li class="fragment semi-fade-out" data-fragment-index="9">no boundaries</li></div>
+                    <div class="fragment fade-in" data-fragment-index="9"><li class="fragment semi-fade-out" data-fragment-index="10">flexibility retained</li></div>
+                    <div class="fragment fade-in" data-fragment-index="10"><li>easy to interpret</li></div>
+                  </ul>
+                </ul>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="r-stack">
+                    <img class="fragment fade-in" data-fragment-index="0" src="graphics/parspace1.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="1" src="graphics/parspace2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/parspace3.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="3" src="graphics/parspace4.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="4" src="graphics/parspace5.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="5" src="graphics/parspace6.png" ondragstart="return false;"/>
+                </div>
+              </div>
+            </div>
+          </section> -->
+
+
+<!--           <section data-menu-title="Four Variants">
+            <h2><i class="fad fa-dice-four fa-sm"></i> Four Variants</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1;">
+                  <div style="padding-bottom: 200px">
+                    <table >
+                      <tr>
+                        <th></th>
+                        <th style="text-align: right">\(\boldsymbol{\alpha}\)</th>
+                        <th>GPE</th>
+                      </tr>
+                      <tr>
+                        <td><span style="color: rgb(208,215,219)">&#x2B24;</span></td>
+                        <td style="text-align: right">n.a.</td>
+                        <td>n.a.</td>
+                      </tr>
+                      <tr>
+                        <td><span style="color: rgb(59,124,178)">&#x2B24;</span></td>
+                        <td style="text-align: right">90°</td>
+                        <td>many (observations)</td>
+                      </tr>
+                      <tr>
+                        <td><span style="color: rgb(200,80,60)">&#x2B24;</span></td>
+                        <td style="text-align: right">180°</td>
+                        <td>many (observations)</td>
+                      </tr>
+                      <tr>
+                        <td><span style="color: rgb(215,180,105)">&#x2B24;</span></td>
+                        <td style="text-align: right">180°</td>
+                        <td>single (objective function)</td>
+                      </tr>
+
+                    </table>
+                  </div>
+              </div>
+              <div style="flex-grow: 1">
+                <div class="r-stack">
+                  <img style="object-fit: contain;" src="graphics/angle2.png" onmousedown="return false">
+                  <img class="fragment fade-in" data-fragment-index="2" style="object-fit: contain;" src="graphics/angle3.png" onmousedown="return false">
+                  <img class="fragment fade-in" data-fragment-index="3" style="object-fit: contain;" src="graphics/rmse1.png" onmousedown="return false">
+                  <img class="fragment fade-in" data-fragment-index="4" style="object-fit: contain;" src="graphics/rmse2.png" onmousedown="return false">
+                </div>
+              </div>
+            </div>
+          </section> -->
+          <section data-menu-title="Ergebnisse">
+            <h2><i class="fad fa-chart-bar fa-sm"></i> Ergebnisse</h2>
+            <div class="r-stack">
+              <img class="fragment fade-out" data-fragment-index="1" src="graphics/OFV_new.svg" ondragstart="return false">
+              <img class="fragment fade-in-then-out" data-fragment-index="1" style="object-fit: contain;" src="graphics/posteriorOutcome.png" ondragstart="return false">
+              <img class="fragment fade-in-then-out" data-fragment-index="2" style="object-fit: contain;" src="graphics/residualsComparison.svg" ondragstart="return false">
+              <!-- <img class="fragment fade-in" data-fragment-index="3" style="object-fit: contain;" src="graphics/posterior.svg" onmousedown="return false"> -->
+              <img class="fragment fade-in" data-fragment-index="4" style="object-fit: contain;" src="graphics/sensitivities.svg" onmousedown="return false">
+              correlations hier noch
+            </div> 
+          </section>
+        </section>
+
+        <section name="⇥">
+          <section data-menu-title="Schlussfolgerungen">
+            <h2><i class="fad fa-lightbulb-exclamation fa-sm"></i> Schlussfolgerungen</h2>
+            <div class="flex-container">
+              <div style="flex-grow: 1; text-align: left;">
+                <ul class="fa-ul" style="margin-left: 0px;">
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1"><span class="fa-li"><i class="fas fa-check-square"></i></span>stochastic framework can optimize borehole placement for domain delineation</li></div>
+                  <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2"><span class="fa-li"><i class="fas fa-check-square"></i></span>floodplain widening can trigger lateral hyporheic exchange</li></div>
+                  <div class="fragment fade-in" data-fragment-index="2"><li><span class="fa-li"><i class="fas fa-check-square"></i></span>proxy-models can make calibration feasible and higher-quality proxy-models pay off</li></div>
+                </ul>
+              </div>
+              <div style="flex-grow: 1;">
+                <div class="r-stack">
+                  <div class="fragment fade-in" data-fragment-index="0" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(3deg); margin-top: 100px;">
+                    <img src="graphics/probabilitiesLongWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
+                  </div>
+                  <div class="fragment fade-in" data-fragment-index="1" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(-2deg); margin-top: 80px;">
+                    <img src="graphics/influxDefenseWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
+                  </div>
+                  <div class="fragment fade-in-then-out" data-fragment-index="2" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(1deg); margin-top: 90px;">
+                    <img src="graphics/OFV_newWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
+                  </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section data-state="no-title-footer" data-transition="fade" data-background-transition="fade"  data-visibility="uncounted" data-background="graphics/dissertation.png" data-background-repeat="no-repeat" data-background-size="contain" data-background-opacity="0.9" data-menu-title="Dissertation" >
+        </section>
+        <section data-state="no-title-footer" data-transition="zoom" data-background-transition="fade" data-visibility="uncounted" data-background="graphics/dissertation.png" data-background-repeat="no-repeat" data-background-size="contain" data-background-opacity="0.2"data-menu-title="Endcard">
+          <br>
+          <h2 style="text-transform: none;">Vielen Dank!</h2>
+          <h5>This research was funded by the German
+Research Foundation (DFG) in the framework
+of the Research Training Group
+GRK 1829 “Integrated Hydrosystem
+Modelling” (Grant Agreement GRK
+1829/2). We acknowledge support by
+the Open Access Publishing Fund of the
+University of Tübingen.
+We are grateful to Alexandra Gessner
+who suggested applying Simulation-Based
+Inference to our problem and
+appreciate the technical help of Michael
+Deistler in this regard. Open Access
+funding enabled and organized by Projekt
+DEAL.</h5>
+        </section>
+      </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script type="text/javascript" src="dist/reveal.js"></script>
+    <script src="plugin/menu/menu.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script src="plugin/simplemenu/simplemenu.js"></script>
+    <script src="plugin/spotlight/spotlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - revealjs.com/initialization/
+      // - revealjs.com/config/
+      Reveal.initialize({
+        hash: false,
+        history: false,
+        transition: 'fade',
+        transitionSpeed: 'slow', // default/fast/slow
+        controls: false,
+        progress: true,
+        slideNumber: "c/t",
+        touch: false,
+        navigationMode: 'linear',
+        // showNotes: false,
+        pdfSeparateFragments: true,
+        hideInactiveCursor: true,
+        hideCursorTime: 2500,
+        center: false,
+        totalTime: 1200,
+        width: 1440,
+        height: 966,
+        margin: 0.2,
+        minScale: 0.2,
+        maxScale: 2.0,
+        spotlight: {
+          size: 150,
+          allowedMouseButtons: [2],
+          presentingCursor: 'default', 
+          fadeInAndOut: 250,
+        },
+        simplemenu: {
+          menuclass: 'smenu',
+          selectby: 'name',
+          auto: true
+        },
+        menu: {
+          side: 'left',
+          width: 'wide',
+          numbers: false,
+          titleSelector: '',
+          useTextContentForMissingTitles: false,
+          hideMissingTitles: true,
+          markers: true,
+          custom: [
+            {
+              title: 'Links',
+              icon: '<i class="fa fa-external-link">',
+              content: '<h1>Dissertation Links</h1><ul class="slide-menu-items"><li class="slide-menu-item"><a href="AllgeierJonas.pdf#part.3"  target="_blank">Delineation</a></li><li class="slide-menu-item"><a href="AllgeierJonas.pdf#part.2"  target="_blank">Interaction</a></li><li class="slide-menu-item"><a href="AllgeierJonas.pdf#part.4"  target="_blank">Calibration</a></li></ul><h1>Publication Links</h1><ul class="slide-menu-items"><li class="slide-menu-item"><a href="gwdOptPublished.pdf"  target="_blank">Delineation</a></li><li class="slide-menu-item"><a href="fpSimplePublished.pdf"  target="_blank">Interaction</a></li></ul><h1>Websites</h1><ul class="slide-menu-items"><li class="slide-menu-item"><a href="https://jonasallgeier.github.io/fpsimple/"  target="_blank">fpSimple</a></li></ul>'
+            },
+          ],
+          openButton: true,
+          openSlideNumber: true,
+          keyboard: true,
+          sticky: false,
+          autoOpen: true,
+          delayInit: false,
+          openOnInit: false,
+          loadIcons: false,
+        },
+        // katex: {
+        //   local: 'katex',
+        //   delimiters: [
+        //     {left: '$$', right: '$$', display: false},
+        //     {left: '$', right: '$', display: false},
+        //     {left: '\\(', right: '\\)', display: false},
+        //     {left: '\\[', right: '\\]', display: false}
+        //  ],
+        // },
+        // multiplex: {
+        //  secret: '16219265360577578127', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+        //   id: '8a0d93b871ec77fd', // Obtained from socket.io server
+        //   url: 'https://reveal-multiplex.glitch.me/' // Location of socket.io server
+        // },
+        // Learn about plugins: revealjs.com/plugins/
+        plugins: [  RevealMarkdown, RevealHighlight, RevealNotes,  Simplemenu, RevealMenu, RevealZoom],
+        dependencies: [
+          { src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize('FH-DGGV Tagung Aachen','rgba(50,50,50,0.05)'); } },
+          // { src: 'plugin/multiplex/socket.io.js', async: true },
+        //  { src: 'plugin/multiplex/master.js', async: true },
+        ]
+      });
+      Reveal.configure({ pdfMaxPagesPerSlide: 1 });
+      Reveal.configure({ overview: false });
+      // printer settings:
+      //  use ?print-pdf to get print view
+      // size: A4, landscape
+      // ✓ ignore scaling and shrink to fit page width
+      // ✓ print background colors
+      // ✓ print background images
+      // ! use vertical half of a 16:9 window
+      // WAY BETTER:
+      // decktape --chrome-path ./node_modules/puppeteer/.local-chromium/linux-800071/chrome-linux/chrome generic --key=ArrowRight --max-slides=HEREMAXNUMBER ./input.html output.pdf
+      
+      // prevent context menu
+      document.addEventListener('contextmenu', event => event.preventDefault());
+
+      var startTime;
+      var targetTime = 12;
+      var mercyTime = 1;
+
+      window.onload = init();
+      
+      Reveal.on( 'slidechanged', event => {
+        if (event.indexh == 0) {
+          // reset starting time when going to initial slide
+          startTime = new Date();
+        } 
+      } );
+
+      function init() {
+        startTime = new Date();
+        console.log('init was called');
+      }
+
+      // function clock() {
+      //   var now = new Date();
+      //   var passedTime = Math.abs(now - startTime)/1000;
+
+      //   var theDIV = document.getElementById('toprighttimerCT');
+      //   var canvas = document.getElementById('toprighttimer');
+      //   var ctx = canvas.getContext('2d');
+      //   canvas.width = theDIV.clientWidth;
+      //   canvas.height = theDIV.clientHeight;
+
+      //   var theColor = getComputedStyle(theDIV).getPropertyValue("--link-color");
+
+      //   ctx.beginPath();
+      //   ctx.lineWidth = 2;
+      //   ctx.strokeStyle = theColor;
+      //   var centerX = canvas.width / 2;
+      //   var centerY = canvas.height / 2;
+      //   var radius = 0.8*Math.min(canvas.width/4, centerY);
+      //   centerX = 3*canvas.width/4;
+      //   var circleFac = passedTime/targetTime;
+
+      //   if (passedTime-targetTime > mercyTime) {
+      //     ctx.globalAlpha = 1;
+      //     ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
+      //     ctx.fillStyle = theColor;
+      //     ctx.globalAlpha = 0;
+      //     ctx.stroke();
+      //     ctx.fill();          
+      //   } else if (passedTime > targetTime) {
+      //     ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
+      //     ctx.stroke();
+      //     ctx.globalAlpha = 0;
+      //     ctx.fillStyle = theColor;
+      //     ctx.fill();
+      //   } else {
+      //     var startPos = 1.5*Math.PI;
+      //     ctx.arc(centerX, centerY, radius, startPos, (2*Math.PI * circleFac+startPos) % (2*Math.PI), false);
+      //     ctx.globalAlpha = 0;
+      //     ctx.stroke();
+      //   } 
+        
+      //   ctx.restore();
+      //   window.requestAnimationFrame(clock);
+      // }
+
+      window.requestAnimationFrame(clock);
+    </script>
+    <style>
+      div:active:not(.bk) {
+        cursor: url(laser2.svg) 51 51, crosshair;
+      }
+
+      .reveal table:not(.hljs-ln) th,
+      .reveal table:not(.hljs-ln) td {
+        border-bottom: 0px solid; }
+
+      .reveal table:not(.hljs-ln) th { 
+          border-bottom: 3px solid; 
+      }
+      .reveal table:not(.hljs-ln) tbody tr:last-child td { 
+          border-bottom: 3px solid; 
+      }
+
+      .bk-input-group div:active {
+        cursor:  grab;
+      }
+
+      .bk div:active {
+        cursor:  grab;
+      }
+
+      .bk-root .bk-btn {
+        font-size: 20px;
+        line-height: 40px;
+      }
+      .bk-root .bk-slider-title {
+        font-size: 20px;
+      }
+      .flex-container {
+        display: flex;
+        /*background-color: DodgerBlue;*/
+        justify-content: center;
+        max-height: 850px;
+      }
+
+      .flex-container > div {
+        margin: 0px 5px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0;
+      }
+
+      .r-stack {
+        max-height: 850px;
+      }
+      .r-stack > img {
+        height: 850px;
+        margin-top: 0;
+      }
+
+      ul.fa-ul {
+        list-style-type: none;
+      }
+      p.left { text-align: left; }
+      /*.reveal .slides { margin-top: 3rem; }*/
+      
+      .container{
+          display: flex;
+      }
+      .outOfFocus {
+        filter: blur(4px);
+        opacity: 0.6;
+      }
+      .col{
+          flex: 1;
+      }
+      .reveal .slides section .fragment.step-fade-in-then-out {
+        opacity: 0;
+        display: none; }
+      .reveal .slides section .fragment.step-fade-in-then-out.current-fragment {
+        opacity: 1;
+        display: inline; }
+      .reveal .slides section .fragment.highlight-current {
+        opacity: inherit;
+        visibility: inherit;
+        font-weight: normal;
+        transition: opacity 0.8s ease;
+      }
+      .reveal .slides section .fragment.highlight-current.current-fragment {
+        opacity: 1.0;
+        font-weight: bold;
+      }
+      * {
+        -webkit-touch-callout: none;
+          -webkit-user-select: none;
+           -khtml-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+      }
+      img {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+      }
+
+      /*pre/code background*/
+      .hljs {
+        background: var(--background-color);
+        filter: brightness(90%);
+      }
+
+      .reveal pre code {
+        max-height: 800px;
+        font-size: 125%;
+        line-height: 110%;
+      }
+
+      .reveal ul:not(.smenu) li {
+        margin-top:0.5rem;
+      }
+
+      .reveal .smenu ul li {
+        margin:0rem;
+        padding: 0rem;
+        height: 2rem;
+        vertical-align: bottom;
+      }
+      .reveal .smenu #menubar div{
+        align-items: center;
+        height: 2rem;
+      }
+      .reveal .smenu a{
+        margin: 0rem 1rem;
+        padding: 0rem;
+        vertical-align: bottom;
+      }
+      .reveal .slide-number {
+        opacity: 1;
+        transition: opacity 600ms ease-in-out;
+        position: fixed;
+        height: 4.5vh;
+        width: 18vh;
+        z-index: 30;
+        right: 30px;
+        font-size: 3vh;
+        text-align: right;
+        letter-spacing: 0em;
+        padding-top: 2.5vh;
+        padding-bottom: 0.5vh;
+        padding-right: 0.5vh;
+        bottom: 3px;
+        background: none;
+      }
+      .no-title-footer .slide-number {
+        opacity: 0;
+        transition: opacity 600ms ease-in-out;
+        display: none;
+      }
+
+      .reveal .slides section, .reveal .slides section section {
+        padding: 0px;
+      }
+
+      .reveal .slides section .fragment.appear {
+        opacity: 0;
+        display: none; }
+      .reveal .slides section .fragment.appear.current-fragment {
+          opacity: 1;
+          display: inline; }
+      .reveal .slides section .fragment.appear.visible {
+          opacity: 1;
+          display: inline; }
+
+      .reveal .slides section .fragment.appear.current-fragment {
+          animation: appear-item-animation 2.5s cubic-bezier(0.59,0.04, 0.26, 0.96) backwards;
+      }
+      @keyframes appear-item-animation {
+          0% {
+              opacity: 0;
+              font-size: 0px;
+              display: none;
+          }
+
+          65% {
+            opacity:  0;
+            font-size: 1em;
+            display:  inline;
+          }
+
+          100% {
+              opacity: 1;
+              display:  inline;
+          }
+      }
+
+      a.myHover {
+        transition: all 0.25s ease-in-out;
+        display: inline-block;
+        color: var(--main-color);
+        margin-left:0px;
+        margin-right:auto;
+        margin-bottom:10px;
+        
+        width: 80%;
+      }
+      a.myHover:hover {
+        transform: scale(1.15);
+        color: var(--main-color);
+      }
+
+      .menubar {
+        height: 7vh;
+      }
+
+      .faCLR {
+        --fa-primary-color: var(--main-color);
+        --fa-secondary-color: var(--link-color);
+      }
+
+      .gridContainer {
+        display: grid; 
+        grid-auto-flow: column; 
+        grid-template-columns: repeat(12, minmax(0, 1fr)); 
+        grid-template-rows: repeat(11, minmax(0, 1fr)); 
+        gap: 6px 6px; 
+        grid-template-areas: 
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."
+          ". . . . . . . . . . . ."; 
+        justify-items: center; 
+        align-items: center; 
+      }
+      .gridItem {
+        color: var(--link-color);
+        background: var(--main-color);
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+      }
+      .gridItemE {
+        opacity: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+      }
+      .gridItem.rhs {
+        opacity: 0.4;
+      }
+
+      .reveal h2 {
+        text-transform: none;
+      }
+    </style>
+  </body>
+</html>
