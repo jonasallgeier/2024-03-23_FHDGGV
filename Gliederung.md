@@ -22,6 +22,8 @@
 ### Proxy-Models in Calibration
 ### MCMC posterior
 
+flow chart einbringen!
+
 ## Methoden (SBI)
 ### short description
 
@@ -33,6 +35,7 @@
 * sensitivities
 
 ## Outro
+* Dankeschön
 * Werbung für Artikel
 * Hintergrundbilder, QR Code im Vordergrund
 * mit Danksagung kombiniert
@@ -43,18 +46,8 @@
 ## Bonus
 * a special parameter space
 
-This research was funded by the German
-Research Foundation (DFG) in the framework
-of the Research Training Group
-GRK 1829 “Integrated Hydrosystem
-Modelling” (Grant Agreement GRK
-1829/2). We acknowledge support by
-the Open Access Publishing Fund of the
-University of Tübingen.
-We are grateful to Alexandra Gessner
-who suggested applying Simulation-Based
-Inference to our problem and
-appreciate the technical help of Michael
-Deistler in this regard. Open Access
-funding enabled and organized by Projekt
-DEAL.
+## Todo
+* klären: Samplegröße für SBI?
+* Folie: zwei Varianten
+* Folie: SBI
+* PDF-Version

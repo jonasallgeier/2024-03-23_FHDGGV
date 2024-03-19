@@ -297,7 +297,11 @@
     background-color: #ffffff; } }
 
 .topleftlogo {
-  background: transparent;
+  background: transparent url('./UT_logo.png') no-repeat;
+}
+
+.toprightlogo {
+  background: transparent url('./Boss_Consult_Logo_40mm.jpg') no-repeat;
 }
 
 .reveal .slide-number {

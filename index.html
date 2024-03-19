@@ -15,22 +15,6 @@
     <script defer src="katex/katex.min.js"></script>
     <script defer src="katex/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body);"></script>
-    <script type="text/javascript" src="bokeh/bokeh-2.4.3.min.js"></script>
-    <script type="text/javascript" src="bokeh/bokeh-widgets-2.4.3.min.js"></script>
-    <script type="text/javascript">
-      Bokeh.set_log_level("info");
-    </script>
-     
-    <script type="text/javascript" src="bokeh/math.js"></script>
-    <script type="text/javascript" src="bokeh/model1.js"></script>
-    <script type="text/javascript" src="bokeh/model2.js"></script>
-    <script type="text/javascript" src="bokeh/model2x.js"></script>
-    <script type="text/javascript" src="bokeh/model3.js"></script>
-    <script type="text/javascript" src="bokeh/model5.js"></script>
-    <!--<script type="text/javascript" src="bokeh/model4.js"></script> -->
-    <script type="text/javascript" src="bokeh/fpsimple.js"></script>
-    <script type="text/javascript" src="bokeh/marchingsquares.min.js"></script>
-    <script type="text/javascript" src="bokeh/bokeh-api-2.4.3.min.js"></script>
     <link rel="stylesheet" href="plugin/menu/menu.css">
     <link rel="stylesheet" href="plugin/simplemenu/simplemenu.css">
     <link href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css" rel="stylesheet">
@@ -45,9 +29,7 @@
         <div style="order:2; flex-grow: 1; flex-shrink: 8; background-color: none;"></div>
         <ul class="smenu" style="order:3; flex-grow: 8;flex-shrink: 1; background-color: none;"></ul>
         <div style="order:4; flex-grow: 1; flex-shrink: 8; background-color: none;"></div> 
-        <div ondblclick="init()" id="toprighttimerCT" style="order:5; flex-grow: 3; flex-shrink: 1; flex-basis:0; background-color: none; min-width: 0; max-height:1rem; height:20vh; ">
-          <canvas style="width: 100%; height: 100%;" width="100px" height="100px" id="toprighttimer" ></canvas>
-        </div>
+        <a href="#/0" class="toprightlogo" ondragstart="return false;" style="order:5; flex-grow: 3;flex-shrink: 1; background-size: contain; background-position: center; height:4vh; "></a>
       </div>
       <div class="slides">
         <section>
@@ -57,10 +39,14 @@
             <div style="padding-bottom:60px; padding-top: 60px;">
               <i class="fas fa-laptop-code fa-2x" data-id="leftIconx"></i>
               <i class="fas fa-fast-forward fa-2x" data-id="middleIconx" style="padding-left: 60px; padding-right: 60px"></i>
-              <i class="fas fa-analytics fa-2x"  data-id="rightIcon"></i>
+              <i class="fas fa-abacus fa-2x"  data-id="rightIcon"></i>
             </div>
             <h5>Dr. Jonas Allgeier <span style="font-style: italic; font-weight: normal;">(BoSS Consult GmbH)</span></h5>
             <h5>Prof. Dr.-Ing. Olaf A. Cirpka <span style="font-style: italic; font-weight: normal;">(Universität Tübingen)</span></h5>
+
+            <img height="70" style="object-fit: contain; margin: 20px" src="dist/theme/Boss_Consult_Logo_40mm.jpg" ondragstart="return false;"/>
+
+            <img height="70" style="object-fit: contain;  margin: 20px" src="dist/theme/UT_logo.png" ondragstart="return false;"/>
           </section>
         </section>
         <section name="↦">
@@ -112,7 +98,7 @@
             </div>
           </section>
           <section data-menu-title="Zwei Varianten">
-            <h2><i class="fad fa-sliders-h fa-sm"></i> Zwei Varianten</h2>
+            <h2><i class="fad fa-object-ungroup fa-sm"></i> Zwei Varianten</h2>
             <div class="flex-container">
               <div style="flex-grow: 1;">
                 <ul>
@@ -261,8 +247,8 @@
               </div>
             </div>
           </section>
-                    <section data-menu-title="Parallelisierung">
-            <h2><i class="fad fa-cogs fa-sm"></i> Parallelisierter Ansatz</h2>
+          <section data-menu-title="Parallelisierung">
+            <h2><i class="fad fa-server fa-sm"></i> Parallelisierter Ansatz</h2>
             <div class="flex-container">
               <div style="flex-grow: 1; text-align: left;">
                 <ol>
@@ -287,15 +273,21 @@
               </div>
             </div>
           </section>
+          <section data-menu-title="Flowchart">
+            <h2><i class="fad fa-server fa-sm"></i> Parallelisierter Ansatz</h2>
+            <div class="r-stack">
+              <img src="graphics/flowchart.svg" ondragstart="return false">
+            </div> 
+          </section>
         </section>
 
         <section name="Methoden (SBI)">
           <section data-menu-title="Methoden (SBI)">
-            <h2><i class="fad fa-sliders-h fa-sm"></i> Simulation-Based Inference</h2>
+            <h2><i class="fad fa-brain fa-sm"></i> Simulation-Based Inference</h2>
             <div class="flex-container">
               <div style="flex-grow: 1;">
                 <ul>
-                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="4">Vorgehensweise "NPE-C"<br>(nach Greenberg et al. 2019)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="4">Vorgehensweise "NPE-C"<br>(nach Lueckmann et al. 2021)</li></div>
                   <ul>
                     <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1"><span style="font-style: italic">A Priori</span> Verteilung &rarr; Parametersätze</li></div>
                     <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2">
@@ -422,11 +414,11 @@
             <h2><i class="fad fa-chart-bar fa-sm"></i> Ergebnisse</h2>
             <div class="r-stack">
               <img class="fragment fade-out" data-fragment-index="1" src="graphics/OFV_new.svg" ondragstart="return false">
-              <img class="fragment fade-in-then-out" data-fragment-index="1" style="object-fit: contain;" src="graphics/posteriorOutcome.png" ondragstart="return false">
-              <img class="fragment fade-in-then-out" data-fragment-index="2" style="object-fit: contain;" src="graphics/residualsComparison.svg" ondragstart="return false">
+              <img class="fragment fade-in-then-out" data-fragment-index="1" style="object-fit: contain;" src="graphics/parallelCoordinates.svg" ondragstart="return false">
+              <img class="fragment fade-in-then-out" data-fragment-index="2" style="object-fit: contain;" src="graphics/posteriorOutcome.png" ondragstart="return false">
+              <img class="fragment fade-in-then-out" data-fragment-index="3" style="object-fit: contain;" src="graphics/residualsComparison.svg" ondragstart="return false">
               <!-- <img class="fragment fade-in" data-fragment-index="3" style="object-fit: contain;" src="graphics/posterior.svg" onmousedown="return false"> -->
-              <img class="fragment fade-in" data-fragment-index="4" style="object-fit: contain;" src="graphics/sensitivities.svg" onmousedown="return false">
-              correlations hier noch
+              <img class="fragment fade-in" data-fragment-index="4" style="object-fit: contain;" src="graphics/corrcoeffs.svg" onmousedown="return false">
             </div> 
           </section>
         </section>
@@ -437,47 +429,54 @@
             <div class="flex-container">
               <div style="flex-grow: 1; text-align: left;">
                 <ul class="fa-ul" style="margin-left: 0px;">
-                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1"><span class="fa-li"><i class="fas fa-check-square"></i></span>stochastic framework can optimize borehole placement for domain delineation</li></div>
-                  <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2"><span class="fa-li"><i class="fas fa-check-square"></i></span>floodplain widening can trigger lateral hyporheic exchange</li></div>
-                  <div class="fragment fade-in" data-fragment-index="2"><li><span class="fa-li"><i class="fas fa-check-square"></i></span>proxy-models can make calibration feasible and higher-quality proxy-models pay off</li></div>
-                </ul>
+                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1"><span class="fa-li"><i class="fas fa-check-square"></i></span>Ersatzmodelle können während der Kalibrierung vielseitig eingesetzt werden.</li></div>
+                  <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2"><span class="fa-li"><i class="fas fa-check-square"></i></span>Es kann sich lohnen je ein Ersatzmodell pro Beobachtung zu nutzen.</li></div>
+                   <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3"><span class="fa-li"><i class="fas fa-check-square"></i></span>SBI ist ein vielversprechender Ansatz (z.B. wenn nur <i>A Priori</i> Modellläufe zur Verfügung stehen).</li></div>
+                   <div class="fragment fade-in" data-fragment-index="3"><li><span class="fa-li"><i class="fas fa-check-square"></i></span>GPE+MCMC war in unserem Beispiel aber noch besser.</li></div>
+                  </ul>
               </div>
               <div style="flex-grow: 1;">
                 <div class="r-stack">
                   <div class="fragment fade-in" data-fragment-index="0" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(3deg); margin-top: 100px;">
-                    <img src="graphics/probabilitiesLongWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
+                    <img src="graphics/flowchart.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
                   </div>
                   <div class="fragment fade-in" data-fragment-index="1" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(-2deg); margin-top: 80px;">
-                    <img src="graphics/influxDefenseWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
-                  </div>
-                  <div class="fragment fade-in-then-out" data-fragment-index="2" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(1deg); margin-top: 90px;">
                     <img src="graphics/OFV_newWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
+                  </div>
+                  <div class="fragment fade-in" data-fragment-index="2" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(1deg); margin-top: 90px;">
+                    <img src="graphics/corrcoeffsWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
+                  </div>
+                  <div class="fragment fade-in" data-fragment-index="3" style=" border: 3px solid whitesmoke; background-color: ghostwhite; box-shadow: 10px 10px 5px #aaaaaa; padding: 10px 10px 90px 10px; transform: rotate(-1deg) translate(-5px,-20px); margin-top: 90px;">
+                    <img src="graphics/residualsComparisonWOB.svg" style="object-fit: contain; background-color: #d5dde3;" ondragstart="return false;" width="500px" height="500px" />
                   </div>
               </div>
             </div>
           </section>
         </section>
-
-        <section data-state="no-title-footer" data-transition="fade" data-background-transition="fade"  data-visibility="uncounted" data-background="graphics/dissertation.png" data-background-repeat="no-repeat" data-background-size="contain" data-background-opacity="0.9" data-menu-title="Dissertation" >
+        <section data-state="no-title-footer" data-transition="fade" data-background-transition="fade"  data-visibility="uncounted" data-background="graphics/paper.png" data-background-repeat="no-repeat" data-background-size="contain" data-background-opacity="0.9" data-menu-title="Artikel" >
+<!--         <div class="r-stack">
+          <h2 style="text-transform: none;">Surrogate-Model Assisted Plausibility-Check, Calibration, and Posterior-Distribution Evaluation of Subsurface-Flow Models</h2>
+        </div> -->
         </section>
-        <section data-state="no-title-footer" data-transition="zoom" data-background-transition="fade" data-visibility="uncounted" data-background="graphics/dissertation.png" data-background-repeat="no-repeat" data-background-size="contain" data-background-opacity="0.2"data-menu-title="Endcard">
-          <br>
+        <section data-state="no-title-footer" data-transition="zoom" data-background-transition="fade" data-visibility="uncounted" data-background="graphics/paper.png" data-background-repeat="no-repeat" data-background-size="contain" data-background-opacity="0.2"data-menu-title="Endcard">
           <h2 style="text-transform: none;">Vielen Dank!</h2>
-          <h5>This research was funded by the German
-Research Foundation (DFG) in the framework
-of the Research Training Group
-GRK 1829 “Integrated Hydrosystem
-Modelling” (Grant Agreement GRK
-1829/2). We acknowledge support by
-the Open Access Publishing Fund of the
-University of Tübingen.
-We are grateful to Alexandra Gessner
-who suggested applying Simulation-Based
-Inference to our problem and
-appreciate the technical help of Michael
-Deistler in this regard. Open Access
-funding enabled and organized by Projekt
-DEAL.</h5>
+          <div class="flex-container">
+            <div style="flex-grow: 1; text-align: left; font-size: 0.8em;">
+              <h5 style="text-align: justify; text-justify: inter-word; font-weight:normal;">This research was funded by the German Research Foundation (DFG) in the framework of the Research Training Group GRK 1829 “Integrated Hydrosystem Modelling” (Grant Agreement GRK 1829/2).
+              <br><br>
+              Open Access funding enabled and organized by Projekt DEAL. We acknowledge support by the Open Access Publishing Fund of the University of Tübingen.
+              <br><br>
+              We are grateful to Alexandra Gessner who suggested applying Simulation-Based Inference to our problem and appreciate the technical help of Michael Deistler in this regard.
+              </h5>
+            </div>
+            <div style="flex-grow: 1; text-align: center;">
+                <img class="r-stretch" src="graphics/QR.png" style="object-fit: contain; margin-bottom: 20px" ondragstart="return false;" width="400px" height="400px">
+            </div>
+          </div> 
+          <br>
+          <h5 style="text-align: left">Allgeier, J., & Cirpka, O. A.; Surrogate-Model Assisted Plausibility-Check, Calibration, and Posterior-Distribution Evaluation of Subsurface-Flow Models. Water Resources Research, 59, e2023WR034453 (2023).</h5>
+          <h5 style="text-align: left">Lueckmann, J.-M., Boelts, J., Greenberg, D. S., Gonçalves, P. J. & Macke, J. H.; Benchmarking Simulation-Based Inference. International conference on artificial intelligence and statistics. PMLR (2021).</h5>
+          <h5 style="text-align: left">Regis, R. G. & Shoemaker, C. A.; Parallel Stochastic Global Optimization Using Radial Basis Functions. INFORMS Journal on Computing 21, 411–426 (2009).</h5>
         </section>
       </div>
     </div>
@@ -588,70 +587,11 @@ DEAL.</h5>
       // prevent context menu
       document.addEventListener('contextmenu', event => event.preventDefault());
 
-      var startTime;
-      var targetTime = 12;
-      var mercyTime = 1;
-
       window.onload = init();
       
-      Reveal.on( 'slidechanged', event => {
-        if (event.indexh == 0) {
-          // reset starting time when going to initial slide
-          startTime = new Date();
-        } 
-      } );
-
       function init() {
-        startTime = new Date();
         console.log('init was called');
       }
-
-      // function clock() {
-      //   var now = new Date();
-      //   var passedTime = Math.abs(now - startTime)/1000;
-
-      //   var theDIV = document.getElementById('toprighttimerCT');
-      //   var canvas = document.getElementById('toprighttimer');
-      //   var ctx = canvas.getContext('2d');
-      //   canvas.width = theDIV.clientWidth;
-      //   canvas.height = theDIV.clientHeight;
-
-      //   var theColor = getComputedStyle(theDIV).getPropertyValue("--link-color");
-
-      //   ctx.beginPath();
-      //   ctx.lineWidth = 2;
-      //   ctx.strokeStyle = theColor;
-      //   var centerX = canvas.width / 2;
-      //   var centerY = canvas.height / 2;
-      //   var radius = 0.8*Math.min(canvas.width/4, centerY);
-      //   centerX = 3*canvas.width/4;
-      //   var circleFac = passedTime/targetTime;
-
-      //   if (passedTime-targetTime > mercyTime) {
-      //     ctx.globalAlpha = 1;
-      //     ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
-      //     ctx.fillStyle = theColor;
-      //     ctx.globalAlpha = 0;
-      //     ctx.stroke();
-      //     ctx.fill();          
-      //   } else if (passedTime > targetTime) {
-      //     ctx.arc(centerX, centerY, radius, 0, 2*Math.PI, false);
-      //     ctx.stroke();
-      //     ctx.globalAlpha = 0;
-      //     ctx.fillStyle = theColor;
-      //     ctx.fill();
-      //   } else {
-      //     var startPos = 1.5*Math.PI;
-      //     ctx.arc(centerX, centerY, radius, startPos, (2*Math.PI * circleFac+startPos) % (2*Math.PI), false);
-      //     ctx.globalAlpha = 0;
-      //     ctx.stroke();
-      //   } 
-        
-      //   ctx.restore();
-      //   window.requestAnimationFrame(clock);
-      // }
-
-      window.requestAnimationFrame(clock);
     </script>
     <style>
       div:active:not(.bk) {
