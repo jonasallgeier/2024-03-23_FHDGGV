@@ -33,8 +33,7 @@
       </div>
       <div class="slides">
         <section>
-          <section data-state="no-title-footer" data-transition="fade"  data-transition-speed="slow" style="margin-top: 5rem" data-background-video="graphics/backgroundvideo.mp4" 
-          data-background-video-loop data-background-video-muted  data-background-opacity="0.2" data-menu-title="Opener" data-visibility="uncounted">
+          <section data-state="no-title-footer" data-transition="fade"  data-transition-speed="slow" style="margin-top: 5rem" data-background="graphics/forbackground.png" data-background-repeat="repeat" data-background-size="contain" data-background-opacity="0.2" data-menu-title="Opener" data-visibility="uncounted">
             <h1 style="text-transform: none; font-size: 2.2em;">ML-basierte Ersatzmodelle <br> zur beschleunigten Kalibrierung und Unsicherheitsberechnung</h1>
             <div style="padding-bottom:60px; padding-top: 60px;">
               <i class="fas fa-laptop-code fa-2x" data-id="leftIconx"></i>
@@ -339,7 +338,7 @@
                 <ul class="fa-ul" style="margin-left: 0px;">
                   <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1"><span class="fa-li"><i class="fas fa-check-square"></i></span>Ersatzmodelle können während der Kalibrierung vielseitig eingesetzt werden.</li></div>
                   <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2"><span class="fa-li"><i class="fas fa-check-square"></i></span>Es kann sich lohnen je ein Ersatzmodell pro Beobachtung zu nutzen.</li></div>
-                   <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3"><span class="fa-li"><i class="fas fa-check-square"></i></span>SBI ist ein vielversprechender Ansatz (z.B. wenn nur <i>A Priori</i> Modellläufe zur Verfügung stehen).</li></div>
+                   <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3"><span class="fa-li"><i class="fas fa-check-square"></i></span>SBI ist ein vielversprechender Ansatz (z.B. wenn nur <span style="font-style: italic;">A Priori</span> Modellläufe zur Verfügung stehen).</li></div>
                    <div class="fragment fade-in" data-fragment-index="3"><li><span class="fa-li"><i class="fas fa-check-square"></i></span>GPE+MCMC war in unserem Beispiel aber noch besser.</li></div>
                   </ul>
               </div>
@@ -475,7 +474,7 @@
         // Learn about plugins: revealjs.com/plugins/
         plugins: [  RevealMarkdown, RevealHighlight, RevealNotes,  Simplemenu, RevealMenu, RevealZoom],
         dependencies: [
-          { src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize('FH-DGGV Tagung Aachen','rgba(50,50,50,0.05)'); } },
+          { src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize('FH-DGGV Tagung Aachen – Session 22 – Vortrag 3','rgba(50,50,50,0.05)'); } },
           // { src: 'plugin/multiplex/socket.io.js', async: true },
         //  { src: 'plugin/multiplex/master.js', async: true },
         ]

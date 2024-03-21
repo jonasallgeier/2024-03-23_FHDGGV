@@ -55,6 +55,8 @@ flow chart einbringen!
 
 ✓ Folie Flowchart
 ✓ Folie: SBI --> Gleichungen
-* Folie: SBI --> 2. flowchart
 ✓ Folie: zwei Varianten --> Abbildungen
+✓ Folie: SBI --> 2. flowchart
 * PDF-Version
+* offline-Ordner Version
+* PDF mit Link versehen
