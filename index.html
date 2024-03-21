@@ -112,34 +112,16 @@
                     <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out"  data-fragment-index="4">
                     PC-Resourcen sinnvoll nutzen</li></div>
                   </ul>
-                  <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">Variante 1:<br>klassische Kalibrierung + Postrocessing (GPE+MCMC)</li></div>
+                  <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">Variante 1:<br>klassische Kalibrierung + Postprocessing (GPE+MCMC)</li></div>
                   <li class="fragment fade-in" data-fragment-index="5">Variante 2:<br>direkte <span style="font-style: italic">A Posteriori</span> Bestimmung (SBI)</li>
                 </ul>
               </div>
               <div style="flex-grow: 1;">
-                <!-- <div class="r-stack">
-                    <img class="fragment fade-in-then-semi-out" data-fragment-index="0" src="graphics/manyParameters.png" ondragstart="return false;"/>
-                    <div class="fragment fade-out" data-fragment-index="3"><div class="fragment fade-in" data-fragment-index="1" style="padding-bottom: 400px;"><i class="fas fa-question fa-6x"></i></div></div>
-                    <div class="fragment fade-out" data-fragment-index="4"><div class="fragment fade-in" data-fragment-index="3"><i class="fas fa-user-robot fa-6x"></i></div></div>
-                    <div class="fragment fade-out" data-fragment-index="5"><div class="fragment fade-in" data-fragment-index="4">
-                      <i style="padding-bottom: 40px;" class="far fa-smile-beam fa-6x"></i>
-                      <br>
-                      <span class="fa-stack fa-3x">
-                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
-                        <i class="fal fa-tachometer-alt-fastest fa-stack-1x"></i>
-                      </span>
-                    </div></div>
-                    <div class="fragment fade-out" data-fragment-index="6"><div class="fragment fade-in" data-fragment-index="5">
-                      <i style="padding-bottom: 40px;" class="far fa-meh-rolling-eyes fa-6x"></i>
-                      <br>
-                      <span class="fa-stack fa-3x">
-                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
-                        <i class="fal fa-tachometer-alt-slow fa-stack-1x"></i>
-                      </span>
-                      </div>
-                    </div>
-                    <div class="fragment fade-in-then-out" data-fragment-index="7"><i style="--fa-secondary-color: #b4b7b9; --fa-secondary-opacity: 1.0" class="fad fa-abacus fa-4x" data-id="abacus"></i><br><i class="fas fa-fast-forward fa-4x" style="padding-top: 80px"></i></div>
-                  </div> -->
+                <div class="r-stack">
+                    <img class="fragment fade-in" data-fragment-index="0" src="graphics/aim_1.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="1" src="graphics/aim_2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/aim_3.png" ondragstart="return false;"/>
+                </div>
               </div>
             </div>
           </section>
@@ -202,10 +184,14 @@
                   <div class="fragment fade-in" data-fragment-index="12"><li>Postprocessing</li></div>
                   <ul>
                     <div class="fragment fade-in" data-fragment-index="13"><li class="fragment semi-fade-out" data-fragment-index="14">echte MCMC-Analyse mit Ersatzmodell</li></div>
-                    <div class="fragment fade-in" data-fragment-index="14"><li style="list-style-type: '&rarr; '" class="fragment semi-fade-out" data-fragment-index="15">vollständige <span style="font-style: italic;">A Posteriori</span> Verteilung</li></div>
-                    <div class="fragment fade-in" data-fragment-index="15"><li style="list-style-type: '&rarr; '" class="fragment semi-fade-out" data-fragment-index="16">Parameterkorrelationen</li></div>
+                    <ul>
+                      <div class="fragment fade-in" data-fragment-index="14"><li style="list-style-type: '&rarr; '" class="fragment semi-fade-out" data-fragment-index="15">vollständige <span style="font-style: italic;">A Posteriori</span> Verteilung</li></div>
+                      <div class="fragment fade-in" data-fragment-index="15"><li style="list-style-type: '&rarr; '" class="fragment semi-fade-out" data-fragment-index="16">Parameterkorrelationen</li></div>
+                    </ul>
                     <div class="fragment fade-in" data-fragment-index="16"><li class="fragment semi-fade-out" data-fragment-index="17">Jacobi-Matrix</li></div>
-                    <div class="fragment fade-in" data-fragment-index="17"><li style="list-style-type: '&rarr; '">Sensitivitäten</li></div>
+                    <ul>
+                      <div class="fragment fade-in" data-fragment-index="17"><li style="list-style-type: '&rarr; '">Sensitivitäten</li></div>
+                    </ul>
                   </ul>
                 </ul>
               </div>
@@ -247,38 +233,52 @@
               </div>
             </div>
           </section>
-          <section data-menu-title="Parallelisierung">
+          <section data-menu-title="Flowchart">
             <h2><i class="fad fa-server fa-sm"></i> Parallelisierter Ansatz</h2>
             <div class="flex-container">
-              <div style="flex-grow: 1; text-align: left;">
-                <ol>
+              <div style="flex-grow: 2; text-align: left;">
+                <div class="r-stack">
+                    <img class="fragment fade-in" data-fragment-index="0" src="graphics/flow_2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="1" src="graphics/flow_3.png" ondragstart="return false;" style="border-radius: 10%;" />
+                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/flow_4.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="3" src="graphics/flow_5.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="4" src="graphics/flow_6.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="6" src="graphics/flow_7.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="7" src="graphics/flow_8.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="8" src="graphics/flow_9.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="9" src="graphics/flow_10.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="10" src="graphics/flow_11.png" ondragstart="return false;" style="border-radius: 10%;"/>
+                    <img class="fragment fade-in" data-fragment-index="11" src="graphics/flow_2.png" ondragstart="return false;"/>
+                </div>
+<!--                 <ol>
                   <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="4">ausgewählte Punkte &rarr; Modell<br>\(\boldsymbol{\vartheta}^\bullet = \mathcal{M}(\boldsymbol{\tilde{p}})\)</li></div>
                   <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">Zielwerte bestimmen<br>\(y_{\boldsymbol{\tilde{p}}} = f_\mathrm{obj}(\boldsymbol{\vartheta}^\ast,\boldsymbol{\vartheta}^\bullet)\)</li></div>
                   <div class="fragment fade-in" data-fragment-index="5"><li class="fragment semi-fade-out" data-fragment-index="6">Ersatzmodell(e) trainieren<br>\(\vartheta^\circ = \mathcal{P}(\boldsymbol{\tilde{p}}) \approx \mathcal{M}(\boldsymbol{\tilde{p}}) = \boldsymbol{\vartheta}^\bullet\)</li></div>
                   <div class="fragment fade-in" data-fragment-index="6"><li class="fragment semi-fade-out" data-fragment-index="10">neue Punkte vorschlagen<br>\(\Delta \boldsymbol{\tilde{p}} = c \cdot \boldsymbol{e} \)</li></div>
                   <div class="fragment fade-in" data-fragment-index="10"><li class="fragment semi-fade-out" data-fragment-index="11">Punkte auswählen<br>\(\xi \cdot m^\mathrm{explore} + (1-\xi) \cdot m^\mathrm{exploit}\)</li></div>
                   <div class="fragment fade-in" data-fragment-index="11"><li>wiederholen</li></div>
-                </ol>
+                </ol> -->
               </div>
               <div style="flex-grow: 1;">
                 <div class="r-stack">
-                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/calibProc2.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="3" src="graphics/calibProc3.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="7" src="graphics/calibProc4.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="8" src="graphics/calibProc5.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="9" src="graphics/calibProc6.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="10" src="graphics/calibProc7.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="11" src="graphics/calibProc8.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="1" src="graphics/calibProc2.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/calibProc3.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="4" src="graphics/calibProc4.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="5" src="graphics/calibProc5.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="6" src="graphics/calibProc6.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="7" src="graphics/calibProc7.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="8" src="graphics/calibProc7_1.png" ondragstart="return false;"/>
+                    <img class="fragment fade-in" data-fragment-index="10" src="graphics/calibProc8.png" ondragstart="return false;"/>
                 </div>
               </div>
             </div>
           </section>
-          <section data-menu-title="Flowchart">
+<!--           <section data-menu-title="Flowchart">
             <h2><i class="fad fa-server fa-sm"></i> Parallelisierter Ansatz</h2>
             <div class="r-stack">
               <img src="graphics/flowchart.svg" ondragstart="return false">
             </div> 
-          </section>
+          </section> -->
         </section>
 
         <section name="Methoden (SBI)">
@@ -289,127 +289,36 @@
                 <ul>
                   <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="4">Vorgehensweise "NPE-C"<br>(nach Lueckmann et al. 2021)</li></div>
                   <ul>
-                    <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1"><span style="font-style: italic">A Priori</span> Verteilung &rarr; Parametersätze</li></div>
-                    <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2">
-                    mit echtem Modell auswerten</li></div>
+                    <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2"><span style="font-style: italic">A Priori</span> Verteilung &rarr; Parametersätze \(\mathbf{\tilde{p}}\)</li></div>
                     <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3">
-                    neuronales Netz:<br>Modelloutput &rarr; Inputparameter </li></div>
-                    <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out"  data-fragment-index="4">
-                    Abfrage für Zielwerte
+                    mit Modell auswerten &rarr; \(\boldsymbol{\vartheta}^\bullet\)</li></div>
+                    <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out" data-fragment-index="4">
+                    neuronales Netz:<br>Input: Modelloutput<br>Output: Parameterverteilung<br>\(\mathbf{\Psi} = f_\mathrm{NN}(\mathbf{\Phi},\boldsymbol{\vartheta}^\bullet)\)</li></div>
+                    <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out"  data-fragment-index="5">
+                    Abfrage für Zielwerte<br>\(\mathbf{\Psi}^\ast
+                     = f_\mathrm{NN}(\mathbf{\Phi},\boldsymbol{\vartheta}^\ast)\)
                     </li></div>
                   </ul>
-                  <div class="fragment fade-in" data-fragment-index="4"><li class="fragment semi-fade-out" data-fragment-index="5">keine zus. Modellläufe bzw. Kopplung nötig</li></div>
-                  <li class="fragment fade-in" data-fragment-index="5">direkt <span style="font-style: italic">A Posteriori</span> Verteilung</li>
+                  <div class="fragment fade-in" data-fragment-index="5"><li class="fragment semi-fade-out" data-fragment-index="6">ergibt direkt <span style="font-style: italic">A Posteriori</span> Verteilung</li></div>
+                  <li class="fragment fade-in" data-fragment-index="6">keine zus. Modellläufe bzw. Kopplung nötig</li>
                 </ul>
               </div>
-              <div style="flex-grow: 1;">
-                <!-- <div class="r-stack">
-                    <img class="fragment fade-in-then-semi-out" data-fragment-index="0" src="graphics/manyParameters.png" ondragstart="return false;"/>
-                    <div class="fragment fade-out" data-fragment-index="3"><div class="fragment fade-in" data-fragment-index="1" style="padding-bottom: 400px;"><i class="fas fa-question fa-6x"></i></div></div>
-                    <div class="fragment fade-out" data-fragment-index="4"><div class="fragment fade-in" data-fragment-index="3"><i class="fas fa-user-robot fa-6x"></i></div></div>
-                    <div class="fragment fade-out" data-fragment-index="5"><div class="fragment fade-in" data-fragment-index="4">
-                      <i style="padding-bottom: 40px;" class="far fa-smile-beam fa-6x"></i>
-                      <br>
-                      <span class="fa-stack fa-3x">
-                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
-                        <i class="fal fa-tachometer-alt-fastest fa-stack-1x"></i>
-                      </span>
-                    </div></div>
-                    <div class="fragment fade-out" data-fragment-index="6"><div class="fragment fade-in" data-fragment-index="5">
-                      <i style="padding-bottom: 40px;" class="far fa-meh-rolling-eyes fa-6x"></i>
-                      <br>
-                      <span class="fa-stack fa-3x">
-                        <i class="fad fa-desktop fa-stack-2x" style="padding-top: 20px; --fa-secondary-color: #3a4849; --fa-secondary-opacity: 1.0; --fa-primary-color: #b4b7b9"></i>
-                        <i class="fal fa-tachometer-alt-slow fa-stack-1x"></i>
-                      </span>
-                      </div>
-                    </div>
-                    <div class="fragment fade-in-then-out" data-fragment-index="7"><i style="--fa-secondary-color: #b4b7b9; --fa-secondary-opacity: 1.0" class="fad fa-abacus fa-4x" data-id="abacus"></i><br><i class="fas fa-fast-forward fa-4x" style="padding-top: 80px"></i></div>
-                  </div> -->
+              <div style="flex-grow: 1.7; text-align: left;">
+                <div class="r-stack">
+                  <img class="fragment fade-in" data-fragment-index="0" src="graphics/fcSBI_0.png" ondragstart="return false;" style="object-fit: contain;"/>
+                  <img class="fragment fade-in" data-fragment-index="1" src="graphics/fcSBI_1.png" ondragstart="return false;" style="object-fit: contain;" />
+                  <img class="fragment fade-in" data-fragment-index="2" src="graphics/fcSBI_2.png" ondragstart="return false;" style="object-fit: contain;" />
+                  <img class="fragment fade-in" data-fragment-index="3" src="graphics/fcSBI_3.png" ondragstart="return false;" style="object-fit: contain;" />
+                  <img class="fragment fade-in" data-fragment-index="4" src="graphics/fcSBI_4.png" ondragstart="return false;" style="object-fit: contain;" />
+                  <img class="fragment fade-in" data-fragment-index="5" src="graphics/fcSBI_5.png" ondragstart="return false;" style="object-fit: contain;" />
+                  <img class="fragment fade-in" data-fragment-index="6" src="graphics/fcSBI_0.png" ondragstart="return false;" style="object-fit: contain;" />
+                </div>
               </div>
             </div>
           </section>
         </section>
 
         <section name="Ergebnisse">
-<!--           <section>
-            <h2><i class="fad fa-stars fa-sm" style="vertical-align: +12%;"></i> A Special Parameter Space</h2>
-            <div class="flex-container">
-              <div style="flex-grow: 1.5; text-align: left;">
-                <ul>
-                  <div class="fragment fade-in" data-fragment-index="0"><li class="fragment semi-fade-out" data-fragment-index="1">prior distributions</li></div>
-                  <div class="fragment fade-in" data-fragment-index="1"><li class="fragment semi-fade-out" data-fragment-index="2">cumulative density functions</li></div>
-                  <div class="fragment fade-in" data-fragment-index="2"><li class="fragment semi-fade-out" data-fragment-index="3">standard logistic distributions</li></div>
-                  <div class="fragment fade-in" data-fragment-index="3"><li class="fragment semi-fade-out" data-fragment-index="5">transformation step<br>\(\textstyle\tilde{p} = \log\!\left(\frac{f_\mathrm{cdf}(p)}{1-f_\mathrm{cdf}(p)}\right)\)</li></div>
-                  <div class="fragment fade-in" data-fragment-index="5"><li>advantages</li></div>
-                  <ul>
-                    <div class="fragment fade-in" data-fragment-index="6"><li class="fragment semi-fade-out" data-fragment-index="7">dimensionless</li></div>
-                    <div class="fragment fade-in" data-fragment-index="7"><li class="fragment semi-fade-out" data-fragment-index="8">homogeneous support intervals</li></div>
-                    <div class="fragment fade-in" data-fragment-index="8"><li class="fragment semi-fade-out" data-fragment-index="9">no boundaries</li></div>
-                    <div class="fragment fade-in" data-fragment-index="9"><li class="fragment semi-fade-out" data-fragment-index="10">flexibility retained</li></div>
-                    <div class="fragment fade-in" data-fragment-index="10"><li>easy to interpret</li></div>
-                  </ul>
-                </ul>
-              </div>
-              <div style="flex-grow: 1;">
-                <div class="r-stack">
-                    <img class="fragment fade-in" data-fragment-index="0" src="graphics/parspace1.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="1" src="graphics/parspace2.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="2" src="graphics/parspace3.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="3" src="graphics/parspace4.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="4" src="graphics/parspace5.png" ondragstart="return false;"/>
-                    <img class="fragment fade-in" data-fragment-index="5" src="graphics/parspace6.png" ondragstart="return false;"/>
-                </div>
-              </div>
-            </div>
-          </section> -->
-
-
-<!--           <section data-menu-title="Four Variants">
-            <h2><i class="fad fa-dice-four fa-sm"></i> Four Variants</h2>
-            <div class="flex-container">
-              <div style="flex-grow: 1;">
-                  <div style="padding-bottom: 200px">
-                    <table >
-                      <tr>
-                        <th></th>
-                        <th style="text-align: right">\(\boldsymbol{\alpha}\)</th>
-                        <th>GPE</th>
-                      </tr>
-                      <tr>
-                        <td><span style="color: rgb(208,215,219)">&#x2B24;</span></td>
-                        <td style="text-align: right">n.a.</td>
-                        <td>n.a.</td>
-                      </tr>
-                      <tr>
-                        <td><span style="color: rgb(59,124,178)">&#x2B24;</span></td>
-                        <td style="text-align: right">90°</td>
-                        <td>many (observations)</td>
-                      </tr>
-                      <tr>
-                        <td><span style="color: rgb(200,80,60)">&#x2B24;</span></td>
-                        <td style="text-align: right">180°</td>
-                        <td>many (observations)</td>
-                      </tr>
-                      <tr>
-                        <td><span style="color: rgb(215,180,105)">&#x2B24;</span></td>
-                        <td style="text-align: right">180°</td>
-                        <td>single (objective function)</td>
-                      </tr>
-
-                    </table>
-                  </div>
-              </div>
-              <div style="flex-grow: 1">
-                <div class="r-stack">
-                  <img style="object-fit: contain;" src="graphics/angle2.png" onmousedown="return false">
-                  <img class="fragment fade-in" data-fragment-index="2" style="object-fit: contain;" src="graphics/angle3.png" onmousedown="return false">
-                  <img class="fragment fade-in" data-fragment-index="3" style="object-fit: contain;" src="graphics/rmse1.png" onmousedown="return false">
-                  <img class="fragment fade-in" data-fragment-index="4" style="object-fit: contain;" src="graphics/rmse2.png" onmousedown="return false">
-                </div>
-              </div>
-            </div>
-          </section> -->
           <section data-menu-title="Ergebnisse">
             <h2><i class="fad fa-chart-bar fa-sm"></i> Ergebnisse</h2>
             <div class="r-stack">
@@ -417,7 +326,6 @@
               <img class="fragment fade-in-then-out" data-fragment-index="1" style="object-fit: contain;" src="graphics/parallelCoordinates.svg" ondragstart="return false">
               <img class="fragment fade-in-then-out" data-fragment-index="2" style="object-fit: contain;" src="graphics/posteriorOutcome.png" ondragstart="return false">
               <img class="fragment fade-in-then-out" data-fragment-index="3" style="object-fit: contain;" src="graphics/residualsComparison.svg" ondragstart="return false">
-              <!-- <img class="fragment fade-in" data-fragment-index="3" style="object-fit: contain;" src="graphics/posterior.svg" onmousedown="return false"> -->
               <img class="fragment fade-in" data-fragment-index="4" style="object-fit: contain;" src="graphics/corrcoeffs.svg" onmousedown="return false">
             </div> 
           </section>

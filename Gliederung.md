@@ -47,7 +47,14 @@ flow chart einbringen!
 * a special parameter space
 
 ## Todo
-* klären: Samplegröße für SBI?
-* Folie: zwei Varianten
-* Folie: SBI
+* klären: Samplegröße
+  * GPE search: 3000
+  * MCMC: 285000 (GPE-Läufe)
+  * NPE: 5000
+
+
+✓ Folie Flowchart
+✓ Folie: SBI --> Gleichungen
+* Folie: SBI --> 2. flowchart
+✓ Folie: zwei Varianten --> Abbildungen
 * PDF-Version
