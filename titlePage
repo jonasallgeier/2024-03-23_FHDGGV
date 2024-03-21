@@ -1,0 +1,14 @@
+\documentclass[11pt,twoside,a4paper]{article} 
+\usepackage[paperheight=190mm,paperwidth=339mm,margin=2cm]{geometry}
+\usepackage[hidelinks]{hyperref} 
+\usepackage{pdfpages}
+\begin{document} 
+	\thispagestyle{empty}
+	\centering
+	\vfill
+	\Huge
+	\includepdf[noautoscale=true, scale=1,pagecommand={    \href{https://jonasallgeier.github.io/2024-03-23_FHDGGV/}{\parbox{15cm}{\hspace*{\quad}}}}]{/home/jonas/Promotion/Presentations/2024-03-23_FHDGGV/3_AllgeierCirpka.pdf}
+	\includepdf[pages=1,pagecommand={},width=\textwidth]{/home/jonas/Promotion/Presentations/2024-03-23_FHDGGV/3_AllgeierCirpka.pdf}
+
+    \vfill
+\end{document}
